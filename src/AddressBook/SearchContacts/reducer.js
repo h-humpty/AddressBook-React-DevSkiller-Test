@@ -3,51 +3,49 @@ import {
   UPDATE_SEARCH_PHRASE__FAILURE,
   UPDATE_SEARCH_PHRASE__START,
   UPDATE_SEARCH_PHRASE__SUCCESS,
-} from "./actions";
+} from './actions'
 
 const initialState = {
-  phrase: "",
+  phrase: '',
   matchingContacts: [],
   searchFailure: false,
-};
+}
 
 const reducer = (state = initialState, action) => {
-  const { type, payload } = action;
+  const { type, payload } = action
 
   switch (type) {
-
     case UPDATE_SEARCH_PHRASE__START:
       return {
         ...state,
         phrase: payload.newPhrase,
         searchFailure: false,
-      };
+      }
 
     case UPDATE_SEARCH_PHRASE__SUCCESS:
       return {
         ...state,
         matchingContacts: payload.matchingContacts,
-      };
+      }
 
-    // TODO something is wrong here
+    // TODO something is wrong here :completed
     case UPDATE_SEARCH_PHRASE__FAILURE:
       return {
         ...state,
-        searchFailure: false,
-      };
+        searchFailure: true,
+      }
 
-    // TODO something is wrong here
+    // TODO something is wrong here :completed
     case SELECT_MATCHING_CONTACT:
       return {
         ...state,
-        phrase: payload.selectedMatchingContact.id,
+        phrase: payload.selectedMatchingContact.value,
         matchingContacts: [],
-      };
+      }
 
     default:
-      return state;
-
+      return state
   }
-};
+}
 
-export default reducer;
+export default reducer

@@ -2,42 +2,41 @@ import {
   FETCH_CONTACT_DETAILS__FAILURE,
   FETCH_CONTACT_DETAILS__START,
   FETCH_CONTACT_DETAILS__SUCCESS,
-} from "./actions";
+} from './actions'
 
 const initialState = {
   fetchedContact: null,
   fetchFailure: false,
-};
+}
 
 const reducer = (state = initialState, action) => {
-  const { type, payload } = action;
+  const { type, payload } = action
 
   switch (type) {
-
-    // TODO something is missing here
+    // TODO something is missing here :completed?
     case FETCH_CONTACT_DETAILS__START:
       return {
         ...state,
         fetchedContact: null,
-      };
+        fetchFailure: false,
+      }
 
-    // TODO something is wrong here
+    // TODO something is wrong here :completed
     case FETCH_CONTACT_DETAILS__SUCCESS:
       return {
         ...state,
-        fetchedContact: null,
-      };
+        fetchedContact: payload.contactDetails,
+      }
 
     case FETCH_CONTACT_DETAILS__FAILURE:
       return {
         ...state,
         fetchFailure: true,
-      };
+      }
 
     default:
-      return state;
-
+      return state
   }
-};
+}
 
-export default reducer;
+export default reducer
